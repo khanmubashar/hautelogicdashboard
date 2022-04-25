@@ -1,18 +1,19 @@
-const express = require('express');
-const payload = require('payload');
+const express = require("express");
+const payload = require("payload");
 
-require('dotenv').config();
+require("dotenv").config();
 const app = express();
 
 // Redirect root to Admin panel
-app.get('/', (_, res) => {
-  res.redirect('/admin');
+app.get("/", (_, res) => {
+  res.redirect("/admin");
 });
 
 // Initialize Payload
 payload.init({
   secret: process.env.PAYLOAD_SECRET,
   mongoURL: process.env.MONGODB_URI,
+  license: process.env.PAYLOAD_LICENSE_KEY,
 
   // Only needed to deploy publicly. Get free Personal license at https://payloadcms.com.
   // license: process.env.PAYLOAD_LICENSE_KEY,
